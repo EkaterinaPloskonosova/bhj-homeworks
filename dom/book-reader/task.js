@@ -1,11 +1,12 @@
 const fontSize = Array.from(document.querySelectorAll('.font-size'));
 const book = document.querySelector('.book');
-const fontSizeActive = document.querySelector('.font-size_active');
+
 
 fontSize.forEach(el => {
 	el.addEventListener('click', (event) => {
 		event.preventDefault();
-
+		
+        const fontSizeActive = document.querySelector('.font-size_active');
 		fontSizeActive.classList.remove('font-size_active');
 		el.classList.add('font-size_active');
 
