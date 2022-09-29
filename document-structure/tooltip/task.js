@@ -15,13 +15,17 @@ hasTooltips.forEach(i => {
     i.addEventListener('click', (event) => {
         event.preventDefault();
 
-        let tooltip = document.querySelector('.tooltip');
+        const tooltip = document.querySelector('.tooltip');
         let {top, left} = i.getBoundingClientRect();
-
-        if (!tooltip) {
-            i.insertAdjacentElement('afterend', createTooltip(i.title, top, left));
-        } else {
-            tooltip.remove();
+        if (tooltip) {
+            if (tooltip === event.target.nextElementSibling) {
+                tooltip.remove();
+                return;
+            } else {
+                tooltip.remove();
+            }
         }
+        i.insertAdjacentElement('afterend', createTooltip(i.title, top, left));
+        
     });
 });
